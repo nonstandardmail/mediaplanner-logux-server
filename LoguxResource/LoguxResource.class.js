@@ -4,7 +4,6 @@ const ReadModel = require("./ReadModel.class");
 //Todo: acl
 //Todo: schema definition and validation on add and update
 //Todo: implement https://logux.io/guide/concepts/subscription/#channel-filters
-//Todo: generate atomic actions based on schema?
 
 class LoguxResource {
   constructor(server, resourceName) {
