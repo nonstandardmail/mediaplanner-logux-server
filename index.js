@@ -9,6 +9,7 @@ const server = new Server(
     subprotocol: "1.0.0",
     supports: "1.x",
     root: __dirname,
+    host: "0.0.0.0",
     port: process.env["PORT"]
   })
 );
