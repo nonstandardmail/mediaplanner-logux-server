@@ -3,7 +3,7 @@ const DB = require("nedb");
 class NEDBDataSource {
   constructor(resourceName) {
     this.db = new DB({
-      filename: `db/data-source-${resourceName}.db`,
+      filename: `${process.env["DB_PATH"]}/data-source-${resourceName}.db`,
       autoload: true
     });
   }
