@@ -12,13 +12,13 @@ const server = new Server(
     subprotocol: "1.0.0",
     supports: "1.x",
     root: __dirname,
-    port: process.env["PORT"]
+    port: process.env["PORT"],
   })
 );
 
 debug("registering logux resources");
 
-["plan", "user", "list", "client", "product"].forEach(resourceName => {
+["plan", "user", "list", "client", "product"].forEach((resourceName) => {
   server[`${resourceName}s`] = new LoguxResource(server, resourceName);
 });
 
@@ -26,7 +26,7 @@ debug("setting up products watcher");
 server.productsWatcher = new ProductsWatcher({
   server,
   frequency: process.env["INVENTORY_UPDATE_FREQUENCY_SEC"],
-  inventoryServiceURL: process.env["INVENTORY_URL"]
+  inventoryServiceURL: process.env["INVENTORY_URL"],
 });
 
 debug("setting up authentication");
