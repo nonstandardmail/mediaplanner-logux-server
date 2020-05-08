@@ -4,14 +4,14 @@ class WriteModel {
       access(ctx, action, meta) {
         return true;
       },
-      async init(ctx, action, meta) {
+      async load(ctx, action, meta) {
         for (let instance of await ds.getAll()) {
           ctx.sendBack({
             type: `${resourceName}/add`,
-            payload: instance
+            payload: instance,
           });
         }
-      }
+      },
     });
   }
 }
