@@ -1,4 +1,4 @@
-const isFirstOlder = require("@logux/core/is-first-older");
+const { isFirstOlder } = require("@logux/core");
 const { omit } = require("ramda");
 
 class WriteModel {
@@ -12,7 +12,7 @@ class WriteModel {
       },
       async process(ctx, action, meta) {
         await ds.add(action.payload, meta);
-      }
+      },
     });
 
     server.type(`${resourceName}/patch`, {
@@ -27,7 +27,7 @@ class WriteModel {
         if (isFirstOlder(resource && resource.meta, meta)) {
           await ds.patch(action.payload.id, omit(["id"], action.payload), meta);
         }
-      }
+      },
     });
 
     server.type(`${resourceName}/delete`, {
@@ -39,7 +39,7 @@ class WriteModel {
       },
       async process(ctx, action, meta) {
         await ds.delete(action.payload);
-      }
+      },
     });
   }
 }
